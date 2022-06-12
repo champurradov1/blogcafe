@@ -1,0 +1,75 @@
+Notas importantes para el desarrollo web
+
+1. Recordar siempre usar el normalize.css para asi 
+hacer que los navegadores representen los elementos
+de manera mas consistente y en linea con los estandares 
+modernos.  https://necolas.github.io/normalize.css/
+
+** Todo para el performance de la web **
+
+2. Hay que empezar a utilizar Lazy Loading (codigo html), 
+este funciona para hacer que el elemento cargue
+hasta que sea visible o lleguemos a el. Se utiliza del
+siguiente modo
+<img src="img/blog1.jpg" alt="imagen blog" loading="lazy">
+Normalmente es recomendable usarlo con imagenes.
+
+
+
+3. Recordar usar preload, va cargar inmediatamente elementos que
+creamos necesarios o que deben cargar lo mas pronto posible,
+Primero es hacer el preload y despues tenemos que cargarlas,
+ejemplo:
+<!-- Preload -->
+<!--Normalize-->
+<link rel="Preload" href="css/normalize.css" as="style">
+<link rel="stylesheet" href="css/normalize.css">
+
+<!-- Preload -->
+<!--Style css-->
+<link rel="Preload" href="css/style.css" as="style">
+<link rel="stylesheet" href="css/style.css">
+
+Para una imagen
+<link rel="preload" href="img/blog1.jpg" as="image">
+
+
+
+4. Prefetch, Este hace que se cargue una pagina mucho antes de
+entrar a ella, y con eso entrar mas rapido, ejemplo:
+Si hacemos prefetch a cursos.html esto hara que el contenido ya
+este cargado aunque nosotros estemos en index para cuando vayamos
+a curso sea mas rapida la carga.
+Tambien se le puede hacer prefetch a la pagina en la cual
+los usuarios estan mas tiempo.
+
+<link rel="Prefetch" href="cursos.html" as="document">
+document hace referencia a un archivo .html
+
+
+
+5.  Para hacer que las imagenes pesen menos podemos hacer uso de 
+imagenes con el formato webp, en lugar de png,jpg, este formato
+(webp) hace que la imagen pese menos por lo cual habra mayor
+performance en la pagina, este codigo usara el que sea mas optimo
+ya sea usar la imagen webp o jpg,etc. Tambien podemos usar el lazy 
+loading
+
+<picture>
+    <source loading="lazy" srcset="img/blog3.webp" type="image/webp>
+    <img loading="lazy" src="img/blog3.jpg" alt="imagen blog">
+</picture>
+
+Si utilizamos webp no hara falta hacer un preload de imagenes
+
+
+
+6. Modernizr y webp en la seccion 9 capitulo 97 (ver mas)
+
+
+7. Deployment y auditar el sitio con Lighthouse, 
+con esta extension de chrome nos ayudara hacer una auditoria
+para ver el performance, accesibilidad, buenas practicas y seo
+
+
+
